@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./Scripts/main.js"></script>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="/styles/img_source/icon_Binarios.png" type="png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet"> 
+    <title>Binary Calc</title>
+</head>
+<body>
+    <header>Convertir Binarios a Decimales</header>
+    <div id="container">
+        <div id="input" >
+            <label for="input">Binario</label>
+            <input type="text" name="Binary" id="NumberInput" placeholder="01001100" maxlength="22">
+            <button onclick="Converter('NumberInput');"> Convertir </button>
+        </div>
+        <div id="result">
+            <h2>Decimal</h2>
+            <p id=num></p>
+        </div>
+    </div>
+
+
+</body>
+</html>

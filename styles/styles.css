@@ -1,0 +1,136 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body{
+    background-color: #090909;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow: -moz-hidden-unscrollable;
+    align-items: center;
+    font-family:  'Roboto mono','Courier New', Courier, monospace;
+}
+header{
+    background-color: #303030;
+    width: 100%;
+    height: 80px;
+    color: hsl(44, 100%, 92%);
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    background-color: #303030;
+    color: #fff4d6;
+
+}
+#container{
+    transform:translateY(40%);
+    width: 60%;
+    height: 50vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #090909;
+}
+
+#input{
+    height: 200px;
+    padding: 10px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 2.5em;
+}
+
+#result{
+    height: 200px;
+    padding: 10px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+#num{display: none;}
+
+input{
+    width: 400px;
+    background-color: transparent;
+    border: none;
+    border-bottom: #fff4d6 3px solid;
+    border-bottom-left-radius:4px ;
+    border-bottom-right-radius:4px ;
+    color: #fff4d6;
+    text-align: center;
+    font-size: 0.8em;
+}
+input:focus{
+    outline: none;
+    animation: animeborder 1s ease-in;
+    border-bottom: #ffc404 3px solid;
+}
+
+button{
+    width: 150px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: #fff4d6 3px solid;
+    color: #fff4d6;
+    font-size: 0.5em;
+    font-family: 'Roboto mono','Courier New', Courier, monospace;
+    height: 50px;
+}
+
+button:hover{
+    animation: buttonimation 1s ease;
+    color:#090909;
+    border: none;
+    background-color: #ffc404;
+}
+
+@keyframes buttonimation{
+    from{background-color: #fff4d6;}
+    to{ background-color: #ffc404;}
+}
+
+@keyframes animeborder{    
+    from{border-bottom: #fff7e0 3px solid;}
+    to{border-bottom: #ffc404 3px solid;}
+
+}
+
+/* Media Querys */
+
+@media (max-height: 900px) {
+    body{font-size: 0.8em;}
+    #container div{ height: 180px;}
+}
+@media (max-height: 760px) {
+    #container div{ height: 150px; font-size: 20px; }
+}
+
+@media (max-width:770px) {
+    input{width: 80%;}
+    #container{width: 80%;}
+    header{padding-bottom: 10px;}
+}
+
+@media  (max-width:360px) {
+    body{ font-size: 0.7em;}
+    input{ font-size: 0.6em;}
+    button{ font-size: 0.7em;}
+}
