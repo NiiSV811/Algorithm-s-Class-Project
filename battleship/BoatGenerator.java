@@ -1,4 +1,4 @@
-package com.battleship;
+package battleship;
 
 import java.util.Random;
 
