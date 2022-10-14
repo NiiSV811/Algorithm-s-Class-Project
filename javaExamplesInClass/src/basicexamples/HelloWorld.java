@@ -1,4 +1,4 @@
-package com.helloworld;
+package basicexamples;
 
 import javax.swing.*; //Import swing Library
 
