@@ -2,7 +2,7 @@ package basicexamples;
 
 import javax.swing.*;
 
-public class Proof {
+public class CastExamples {
 
     public static void main(String[] args) {
 
