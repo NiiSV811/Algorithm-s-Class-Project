@@ -1,8 +1,9 @@
 package personclass;
 
 import javax.swing.*;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
 public class App {
     public static void main(String[] args) {
         //Auxiliary Variables
@@ -12,7 +13,7 @@ public class App {
         String auxHeight = "";
         String auxWeight = "";
         String auxDate = "";
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String auxMarried = "";
 
         // Variables to Set
@@ -23,7 +24,7 @@ public class App {
         String rh = "";
         float height = 0;
         float weight = 0;
-        Date bornDate = null;
+        LocalDate bornDate = null;
         boolean married = false;
         String skinColor = "";
 
@@ -32,7 +33,6 @@ public class App {
 
         //Input
         name = JOptionPane.showInputDialog(null, "Ingresa nombre: ", "Jonh Doe");
-        auxAge = JOptionPane.showInputDialog(null, "Ingresa Edad : ", "18");
         auxGenre = JOptionPane.showInputDialog(null, "Ingresa Género: \n true: M \nfalse: F ", "false");
         id = JOptionPane.showInputDialog(null, "Ingresa id : ", "T.I 1054262632");
         rh = JOptionPane.showInputDialog(null,"Ingresa RH : ", "O+");
@@ -45,11 +45,10 @@ public class App {
 
         //Casting
         try {
-            age = Integer.parseInt(auxAge);
             genre = Boolean.parseBoolean(auxGenre);
             height = Float.parseFloat(auxHeight);
             weight = Float.parseFloat(auxWeight);
-            bornDate = dateFormat.parse(auxDate);
+            bornDate = LocalDate.parse(auxDate, pattern);
             married = Boolean.parseBoolean(auxMarried);
 
         }catch (Exception e){
@@ -58,7 +57,7 @@ public class App {
         }
 
         //Setting
-        lulu.setAge(age);
+
         lulu.setName(name);
         lulu.setGenre(genre);
         lulu.setId(id);
@@ -68,6 +67,7 @@ public class App {
         lulu.setBornDate(bornDate);
         lulu.setMarried(married);
         lulu.setSkinColor(skinColor);
+        lulu.setAge();
 
         //Showing person attributes
         JOptionPane.showMessageDialog(null,"Los atributos de "
@@ -75,11 +75,12 @@ public class App {
                 "\n Nombre: " + lulu.getName() +
                 "\n Id: " + lulu.getId()+
                 "\n Edad: " + lulu.getAge() + " años" +
+                "\n " + lulu.getName()+ " es mayor de edad? : " + lulu.isGreaterThan18() +
                 "\n Genero: " + lulu.getGenre() + "        false: F  true: M" +
                 "\n RH: " + lulu.getRh()+
                 "\n Estatura: " + lulu.getHeight() + "    metros" +
                 "\n Peso: " + lulu.getWeight() + "     Kilogramos " +
-                "\n Fecha Nacimiento : " + dateFormat.format(lulu.getBornDate()) +
+                "\n Fecha Nacimiento : " + lulu.getBornDate().format(pattern) +
                 "\n Casad@? : " + lulu.getMarried() +
                 "\n Color de tez : " + lulu.getSkinColor()
         );

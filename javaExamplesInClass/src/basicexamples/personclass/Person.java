@@ -1,6 +1,9 @@
 package personclass;
 
-import java.util.Date;
+import javax.swing.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
 
 public class Person {
 
@@ -12,7 +15,7 @@ public class Person {
     private String rh;
     private float height;
     private float weight;
-    private Date bornDate;
+    private LocalDate bornDate;
     private boolean married;
     private String skinColor;
     
@@ -27,7 +30,7 @@ public class Person {
         this.rh = "";
         this.height = 0;
         this.weight = 0;
-        this.bornDate = new Date();
+        this.bornDate = LocalDate.now();
         this.married = false;
         this.skinColor = "";
     }
@@ -35,9 +38,7 @@ public class Person {
     //Methods
         //Setting Methods
         
-    public void setAge(int age){
-        this.age = age;
-    }
+
     public void setGenre(boolean genre){
         this.genre = genre;
     }
@@ -61,7 +62,7 @@ public class Person {
         this.weight = weight;
     }
 
-    public void setBornDate( Date bornDate){
+    public void setBornDate( LocalDate bornDate){
         this.bornDate = bornDate;
     }
 
@@ -73,15 +74,22 @@ public class Person {
         this.skinColor = skinColor;
     }
 
+    public void setAge(){
+
+        LocalDate actualDate = LocalDate.now();
+        Period differentialYears = this.bornDate.until(actualDate);
+        this.age = differentialYears.getYears();
+
+    }
 
         //Get methods
-    public int getAge(){
-        return this.age;
-    }
+
 
     public boolean getGenre(){
         return this.genre;
     }
+
+    public int getAge(){return this.age;}
 
     public String getName(){
         return this.name;
@@ -103,7 +111,7 @@ public class Person {
         return this.weight;
     }
 
-    public Date getBornDate(){
+    public LocalDate getBornDate(){
         return this.bornDate;
     }
 
@@ -113,6 +121,16 @@ public class Person {
 
     public String getSkinColor(){
         return this.skinColor;
+    }
+
+
+    //Person Methods
+
+    public boolean isGreaterThan18(){
+       if (this.age >= 18){
+           return true;
+       }
+       return false;
     }
 
 }
