@@ -2,43 +2,51 @@ package co.edu.uptc.model;
 
 public class MathUtil {
 
-    public static String calcEvenNumbers(int limit){
-        String evenNums = "";
-        int iterator = 0;
+    private int [] arrayResult;
+
+    public int[] getArrayResult() {
+        return arrayResult;
+    }
+
+    public  void calcEvenNumbers(int limit){
+
+        if(limit % 2 == 0){
+            this.arrayResult = new int[limit/2];
+        }else{
+            this.arrayResult = new int[(limit-1)/2];
+        }
+
+
+        int iterator = 1;
+        int index = 0;
         while (iterator <=limit ){
 
-            if (iterator%2 == 0){
-                evenNums = evenNums + ", " + iterator + " ";
+            if (iterator % 2 == 0){
+                this.arrayResult[index] = iterator;
+                index ++;
             }
-
             iterator++;
         }
-
-        evenNums = evenNums.replaceFirst(",", "");
-        evenNums = "Los numeros pares de 0 hasta " + limit +" son ->"+ evenNums;
-
-        return evenNums;
     }
 
-    public static String calcOddNumbers(int limit){
-        String oddNumbers = "";
-        int iterator = 0;
-
+    public  void calcOddNumbers(int limit){
+        if(limit % 2 == 0){
+            this.arrayResult = new int[limit/2];
+        }else{
+            this.arrayResult = new int[(limit + 1)/2];
+        }
+        int iterator = 1;
+        int index = 0;
         while (iterator <= limit){
             if (iterator % 2 != 0){
-                oddNumbers = oddNumbers + ", " + iterator + " ";
+                arrayResult[index]= iterator;
+                index++;
             }
             iterator++;
         }
-
-        oddNumbers = oddNumbers.replaceFirst(",", "");
-        oddNumbers = "Los numeros impares del 0 hasta " + limit + " son -> " + oddNumbers;
-
-        return oddNumbers;
-
     }
 
-    public static String calcCousinNumbers(int limit){
+    public void calcCousinNumbers(int limit){
         String primeNumbers = "";
         int iterator = 2;
         boolean isPrime;
@@ -51,15 +59,18 @@ public class MathUtil {
                 }
             }
             if (isPrime){
-                primeNumbers = primeNumbers + ", " + iterator + " ";
+                primeNumbers = primeNumbers + iterator;
             }
             iterator++;
         }
+        int numAddtoArray = 0;
+        this.arrayResult = new int[primeNumbers.length()];
+        for(int prime = 0; prime < arrayResult.length; prime++){
+            numAddtoArray = Integer.parseInt(String.valueOf(primeNumbers.charAt(prime)));
+            this.arrayResult[prime] = numAddtoArray;
+        }
 
-        primeNumbers = primeNumbers.replaceFirst(",", "");
-        primeNumbers = "Los numeros primos del 0 al " + limit + " son ->" + primeNumbers;
 
-        return primeNumbers;
     }
 
 
@@ -80,22 +91,26 @@ public class MathUtil {
 
     }
 
-    public static String calcEvenNumbersFromTo(int floorLimit, int topLimit){
-        String evenNums = "";
+    public void calcEvenNumbersFromTo(int floorLimit, int topLimit){
+        int len = topLimit - floorLimit;
+
+        if(len % 2 == 0){
+            this.arrayResult = new int[len/2];
+        }else{
+            this.arrayResult = new int[(len-1)/2];
+        }
+        int index = 0;
         int iterator = floorLimit;
         while (iterator <= topLimit ){
 
             if (iterator%2 == 0){
-                evenNums = evenNums + ", " + iterator + " ";
+               this.arrayResult[index] = iterator ;
+               index++;
             }
 
             iterator++;
         }
 
-        evenNums = evenNums.replaceFirst(",", "");
-        evenNums = "Los numeros pares de "+ floorLimit +" hasta " + topLimit +" son ->"+ evenNums;
-
-        return evenNums;
 
     }
 
@@ -144,5 +159,4 @@ public class MathUtil {
 
         return primeNumbers;
     }
-
 }
