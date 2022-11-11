@@ -47,37 +47,48 @@ public class View {
                         "En el juego encontraras una matriz n x n y para atacar posiciones debes escribir la coordenada empezando con\n"+
                         "la letra y luego el numero. Ejemplos: A5, G8 , j10... Si al atacar te aparece un '■' has impactado un barco.\n"+
                         "En la parte inferior del tablero aparecerán tus tiros disponibles, si se te acaban antes de derribar todos\n"+
-                        "los barcos, perderás."
+                        "los barcos, perderás.\n" +
+                        "Los tipos de barcos son: Extra Largos(7), Largos(5), Grandes(3), Medianos(2), Pequeños(1)\n"+
+                        "Los tamaños de los tableros y cantidad de barcos son:\n" +
+                        "Muy fácil: filas:10 , columnas: 10 , barcos grandes: 1 , barcos medianos: 1 , barcos pequeños : 1\n" +
+                        "Fácil : filas: 15, columnas: 15, barcos grandes: 2, barcos medianos: 3, barcos pequeños: 5\n" +
+                        "Normal: filas: 18, columnas: 18, barcos grandes: 3, barcos medianos: 5, barcos pequeños: 7\n" +
+                        "Difícil: filas: 22, columnas: 22, barcos largos: 3, barcos grandes: 7, barcos medianos: 4, barcos pequeños: 10\n" +
+                        "NightMare: filas: 26, columnas: 26,barcos extra Largos: 3, barcos largos: 5, barcos grandes: 9, barcos medianos: 6, barcos pequeños: 11\n"
         );
 
-        System.out.print("\nNiveles de Dificultad: \nFácil : 1\nNormal : 2\nDificil : 3\nNightMare : 4\n");
+        System.out.print("\nNiveles de Dificultad: \nMuy fácil : 1\nFácil : 2\nNormal : 3\nDifícil : 4\nNigthMare : 5\n");
 
         while (inGame){
-            levelDiff = controller.selectDifficulty(0,4);
+            levelDiff = controller.selectDifficulty(0,5);
 
-            switch (levelDiff){
-                case 0://Exit
-                    inGame = false;
-                    break;
-                case 1: //Easy
+            switch (levelDiff) {
+                case 0 ->inGame = false; //Exit
+                case 1 -> {
+                    totalBigBoats = 1;
+                    totalMediumBoats = 1;
+                    totalSmallBoats = 1;
+                    extraMoves = 30;
+                    rows = 10;
+                    columns = 10;
+                }
+                case 2 -> { //Easy
                     totalBigBoats = 2;
                     totalMediumBoats = 3;
                     totalSmallBoats = 5;
                     extraMoves = 200;
                     rows = 15;
                     columns = 15;
-                    break;
-
-                case 2: //Normal
+                }
+                case 3 -> { //Normal
                     totalBigBoats = 3;
                     totalMediumBoats = 5;
                     totalSmallBoats = 7;
                     extraMoves = 250;
                     rows = 18;
                     columns = 18;
-                    break;
-
-                case 3://Hard /What do you do for playing this??
+                }
+                case 4 -> {//Hard /What do you do for playing this??
                     totalLargeBoats = 3;
                     totalBigBoats = 7;
                     totalMediumBoats = 4;
@@ -85,9 +96,8 @@ public class View {
                     extraMoves = 300;
                     rows = 22;
                     columns = 22;
-                    break;
-
-                case 4://NightMare You won't Win this game
+                }
+                case 5 -> {//NightMare You won't Win this game
                     totalXLargeBoats = 3;
                     totalLargeBoats = 5;
                     totalBigBoats = 9;
@@ -96,7 +106,7 @@ public class View {
                     extraMoves = 400;
                     rows = 26;
                     columns = 26;
-                    break;
+                }
             }
 
             if(!inGame){
@@ -122,8 +132,8 @@ public class View {
             mainBoard.setStatus("\n");
 
             while (mainBoard.getMoves() > 0 && mainBoard.getHitCounter() != mainBoard.getHits()){
-		System.out.print("\033[H\033[2J");
-        	System.out.flush();
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
                 mainBoard.printBoardMask();
 
                 remainingPositions = mainBoard.getHits() - mainBoard.getHitCounter();
@@ -138,9 +148,9 @@ public class View {
             System.out.flush();
 
             if(mainBoard.getMoves() >= 0 && mainBoard.getHitCounter() == mainBoard.getHits()){
-                System.out.print("\nFelicitaciones Has Ganado\nʘ‿ʘ\n");
+                System.out.print("\nFelicitaciones Has \033[92mGanado\033[0m\nʘ‿ʘ\n");
             }else{
-                System.out.print("\nGame Over: Has perdido \nಥ﹏ಥ\n");
+                System.out.print("\nGame Over: Has \033[91mperdido\033[0m \nಥ﹏ಥ\n");
                 mainBoard.printBoardMask();
                 mainBoard.printBoard();
 
