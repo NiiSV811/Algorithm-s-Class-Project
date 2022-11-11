@@ -3,6 +3,16 @@ package battleship.view;
 import battleship.controller.InputController;
 import battleship.model.BattleBoard;
 
+/**
+ * This class show titles, messages, set Battle Board values
+ * Calls Input controller to play, and update the board in a loop
+ * also verify when the user finish a game.
+ *
+ *@author Nicolas Sarmiento Vargas
+ *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+ *@version 1.0
+ */
+
 public class View {
     public static void main(String[] args) {
         BattleBoard mainBoard;
@@ -112,7 +122,9 @@ public class View {
             mainBoard.setStatus("\n");
 
             while (mainBoard.getMoves() > 0 && mainBoard.getHitCounter() != mainBoard.getHits()){
-                mainBoard.printBoardMask();
+                System.out.print("\033[H\033[2J");
+        	System.out.flush();
+		mainBoard.printBoardMask();
 
                 remainingPositions = mainBoard.getHits() - mainBoard.getHitCounter();
                 System.out.print(mainBoard.getStatus());

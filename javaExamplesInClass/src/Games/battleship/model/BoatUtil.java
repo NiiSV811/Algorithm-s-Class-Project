@@ -1,5 +1,15 @@
 package battleship.model;
 import java.util.Random;
+
+
+/**
+ * This class search a empty area in a BattleBoard board,
+ * and change matrix board positions to assign char to boats
+ *
+ *@author Nicolas Sarmiento Vargas
+ *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+ *@version 1.0
+ */
 public class BoatUtil {
 
     public void BoatGenerator(BattleBoard board, int boatSize) {
@@ -67,6 +77,17 @@ public class BoatUtil {
             }
         }
     }
+
+    /**
+     * This function only uses for BoatGenerator,
+     * its purpose is to verify if the random coordinates
+     * are in a empty area.
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     * @return if the random coordinates are in a empty area
+     */
+
 
     private boolean searchArea(BattleBoard board, int posX, int posY, int boatMedium){
         for(int y = posY-boatMedium ; y <= posY+boatMedium ; y++){

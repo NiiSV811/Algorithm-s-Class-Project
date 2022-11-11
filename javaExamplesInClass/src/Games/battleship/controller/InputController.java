@@ -4,9 +4,28 @@ import battleship.model.BattleBoard;
 
 import java.util.Scanner;
 
+/**
+ * InputController is for manage inputs and
+ * manage exceptions if the user enter a invalid
+ * command
+ *
+ *@author Nicolas Sarmiento Vargas
+ *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+ *@version 1.0
+ */
+
 public class InputController {
     Scanner input = new Scanner(System.in);
     private int option = 0;
+
+    /**
+     * This method is uses to select the difficulty
+     * levels
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     * @return int for levels
+     */
     public int selectDifficulty(int minOption, int maxOption){
 
         while (true){
@@ -27,6 +46,14 @@ public class InputController {
 
         return this.option;
     }
+
+    /**
+     * This method parse inputs and modify Battle Board,
+     * then update the game state
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     */
 
     public void selectTarget(BattleBoard board){
         int tarX = 0;
@@ -61,6 +88,16 @@ public class InputController {
         }
 
     }
+
+    /**
+     * This method calls when a user finish a game and ask for
+     * replaying
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     * @return if the user wants to play again.
+     */
+
 
     public boolean playAgain(){
         System.out.println("Volver a jugar : 1 \nSalir: Ingrese cualquier digito");

@@ -1,5 +1,18 @@
 package battleship.model;
 
+
+/**
+ * Battle Boar Class, this class:
+ *  - Generates the board and a mask to modify and play.
+ *  - Controls the Game State, empty positions, hit positions
+ *    and remaining moves.
+ *
+ * @author Nicolas Sarmiento Vargas
+ * Git Hub: https://github.com/NiiSV811
+ * @version 1.0
+ */
+
+
 public class BattleBoard {
     //Attributes
     private char board[][];
@@ -17,6 +30,7 @@ public class BattleBoard {
     private String status;
 
 
+    //Constructor
     public BattleBoard(int rows, int columns){
         this.rows = rows;
         this.columns = columns;
@@ -69,18 +83,18 @@ public class BattleBoard {
 
     //Large Boats
     public void setLargeBoatNumber(int largeBoats){this.largeBoatNumber = largeBoats;}
-    public int getLargeBoatNumber(){return this.largeBoatNumber;}
+
     //Big Boats
     public void setBigBoatNumber(int bigBoats){this.bigBoatNumber = bigBoats;}
-    public int getBigBoatNumber(){return this.bigBoatNumber;}
+
 
     //Medium Boats
     public void setMediumBoatNumber(int mediumBoats){this.mediumBoatNumber = mediumBoats;}
-    public int getMediumBoatNumber(){return this.mediumBoatNumber;}
+
 
     //Small Boats
     public void setSmallBoatNumber(int smallBoats){this.smallBoatNumber = smallBoats;}
-    public int getSmallBoatNumber(){return this.smallBoatNumber;}
+
 
     // Rows
     public int getRows(){return this.rows;}
@@ -117,6 +131,15 @@ public class BattleBoard {
 
 
     //Mainly Methods
+
+    /**
+     * PrintBoard print the matrix with boats and empty positions with style
+     * this uses for testing and to show at the end of the game.
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     */
+
     public void printBoard(){
         char[] letters = new char[board[0].length];
         int[] numbers = new int[board.length];
@@ -128,7 +151,7 @@ public class BattleBoard {
             letters[c]= (char)('@'+ c+1);
         }
 
-        System.out.print("\t\t"+"╔\t\t");
+        System.out.print("\t\t"+"╔\t");
         for(char c : letters){
             System.out.print(c+" ");
         }
@@ -152,13 +175,21 @@ public class BattleBoard {
             System.out.println(" ");
         }
 
-        System.out.print("\t\t"+"╚\t\t");
+        System.out.print("\t\t"+"╚\t");
         for(char c : letters){
             System.out.print(" "+" ");
         }
         System.out.print("  ╝");
 
     }
+
+    /**
+     * PrintMask print the matrix that update in every turn,
+     * use the method to show the user the board to interact.
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     */
 
     public void printBoardMask(){
         char[] letters = new char[board[0].length];
@@ -171,7 +202,7 @@ public class BattleBoard {
             letters[c]= (char)('@'+ c+1);
         }
 
-        System.out.print("\t\t"+"╔\t\t");
+        System.out.print("\t\t"+"╔\t");
         for(char c : letters){
             System.out.print(c+" ");
         }
@@ -195,7 +226,7 @@ public class BattleBoard {
             System.out.println(" ");
         }
 
-        System.out.print("\t\t"+"╚\t\t");
+        System.out.print("\t\t"+"╚\t");
         for(char c : letters){
             System.out.print(" "+" ");
         }
@@ -203,6 +234,13 @@ public class BattleBoard {
 
     }
 
+    /**
+     * setBoats: Set every type of boats on the board
+     *
+     *@author Nicolas Sarmiento Vargas
+     *  Git Hub: <a href="https://github.com/NiiSV811">...</a>
+     * @see BoatUtil#BoatGenerator(BattleBoard, int);
+     */
     public void setBoats(){
         BoatUtil generator = new BoatUtil();
         for (int xL = 0; xL < this.extraLargeBoatNumber; xL++){
